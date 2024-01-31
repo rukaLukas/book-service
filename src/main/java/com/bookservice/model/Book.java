@@ -32,7 +32,7 @@ public class Book implements Serializable {
     private Date launchDate;
 
     @Column(nullable = false)
-    private double price;
+    private Double price;
 
     @Column(nullable = false, length = 250)    
     private String title;
@@ -81,7 +81,7 @@ public class Book implements Serializable {
         this.launchDate = launchDate;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
