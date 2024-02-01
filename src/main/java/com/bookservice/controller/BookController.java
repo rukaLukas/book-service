@@ -45,9 +45,8 @@ public class BookController {
             if (book == null) throw new RuntimeException("Book not found");
 
             var cambio = cambioProxy.getCambio(book.getPrice(), "USD", currency);            
-
             var port = environment.getProperty("local.server.port");
-            book.setEnviroment(port + " FEIGN");
+            book.setEnviroment(port + " FEIGN - Cambio: " + cambio.getEnvironment());
             book.setPrice(cambio.getConvertedValue());
 
           

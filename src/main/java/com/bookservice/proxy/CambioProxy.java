@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookservice.response.Cambio;
 
-@FeignClient(name = "cambio-service", url = "localhost:8000")
+@FeignClient(name = "cambio-service")
 public interface CambioProxy {
     
     @GetMapping("/cambio-service/{amount}/{from}/{to}")
