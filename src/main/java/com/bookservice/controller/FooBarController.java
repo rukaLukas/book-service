@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 
 import org.slf4j.Logger;
@@ -20,12 +21,13 @@ public class FooBarController {
     
     @GetMapping("/foo-bar")
     // @Retry(name = "foo-bar", fallbackMethod = "fooBarFallback")
-    @CircuitBreaker(name = "foo-bar", fallbackMethod = "fooBarFallback")
+    // @CircuitBreaker(name = "foo-bar", fallbackMethod = "fooBarFallback")
+    @RateLimiter(name = "default")
     public String fooBar(){
         logger.info("Request received");
-        var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
-        return response.getBody();
-        // return "Foo Bar";
+        // var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
+        // return response.getBody();
+        return "Foo Bar";
     }
 
     public String fooBarFallback(Exception e){

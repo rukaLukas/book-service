@@ -5,6 +5,16 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 resilience4j:
+  ratelimiter:
+    instances:
+      default:
+        limit-for-period: 2
+        limit-refresh-period: 10s
+        timeout-duration: 0
+      foo-bar:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 0
   retry:
     instances:
       foo-bar:
