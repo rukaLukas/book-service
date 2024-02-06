@@ -18,7 +18,7 @@ public class FooBarController {
     private Logger logger = LoggerFactory.getLogger(FooBarController.class);
     
     @GetMapping("/foo-bar")
-    @Retry(name = "foo-bar")
+    @Retry(name = "foo-bar", fallbackMethod = "fooBarFallback")
     public String fooBar(){
         logger.info("Request received");
         var response = new RestTemplate().getForEntity("http://localhost:8080/foo-bar", String.class);
@@ -26,8 +26,8 @@ public class FooBarController {
         // return "Foo Bar";
     }
 
-    // public String fooBarFallback(Exception e){
-    //     logger.info("Fallback method called");
-    //     return "Fallback Response";
-    // }
+    public String fooBarFallback(Exception e){
+        logger.info("Fallback method called");
+        return "Fallback Response";
+    }
 }
