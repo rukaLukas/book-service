@@ -67,3 +67,9 @@ spring:
     schemas: book_service
     user: root
     password: root
+springdoc:
+ api-docs:
+  path: /book-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
+ swagger-ui:
+  enabled: true
+  path: /swagger-ui.html

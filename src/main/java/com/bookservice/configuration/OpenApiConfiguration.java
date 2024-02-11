@@ -8,10 +8,11 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.License;
 
+@Configuration
 @OpenAPIDefinition(info =
-        @Info(title = "Cambio Service API",
+        @Info(title = "Book Service API",
                 version = "v1",
-                description = "Documentation of Cambio Service API"))
+                description = "Documentation of Book Service API"))
 public class OpenApiConfiguration {
 	
 	@Bean
@@ -20,7 +21,7 @@ public class OpenApiConfiguration {
 			.components(new Components())
 			.info(
 				new io.swagger.v3.oas.models.info.Info()
-				.title("Cambio Service API")
+				.title("Book Service API")
 				.version("v1")
 				.license(
 					new License()
